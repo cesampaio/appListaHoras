@@ -16,6 +16,17 @@ class Trabalhador:
 #retirado da funcao para nao dar erro
 trabalhadores = {}
 
+# criar função para ordenar a biblioteca de trabalhadores
+def ordenar_trabalhadores():
+    # ordenar os trabalhadores por nome
+    trabalhadores_ordenados = sorted(trabalhadores.items(), key=lambda x: x[1].nome)
+    # limpar a lista de trabalhadores
+    trabalhadores.clear()
+    # adicionar os trabalhadores ordenados à lista de trabalhadores
+    for trabalhador in trabalhadores_ordenados:
+        trabalhadores[trabalhador[0]] = trabalhador[1]
+
+
 # Funcao para processar os dados com base nos arquivos selecionados
 def processar_dados():
     input_file_paths = [itf.input_file_path1.get(), itf.input_file_path2.get(), itf.input_file_path3.get()]
@@ -88,6 +99,10 @@ def processar_dados():
                     trabalhadores[nr] = trabalhador
                 #trabalhadores[nr] = trabalhador    
                 trabalhador.trabnot.append(trabnot)
+
+        
+    # Ordenar os trabalhadores por nome
+    ordenar_trabalhadores()
 
     # Exportar para um novo CSV
     output_data = []
