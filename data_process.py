@@ -1,5 +1,7 @@
 import pandas as pd
 import interface as itf
+from openpyxl  import Workbook
+from openpyxl.styles import Font, Color, Alignment, Border, Side, colors
 
 class Trabalhador:
     def __init__(self, nr, nome):
@@ -118,7 +120,7 @@ def processar_dados():
     output_df2 = pd.DataFrame(output_data, columns=['Nr', 'Nome', 'Primeiras', 'Seguintes', 'Sabado', 'Feriado', 'Domingo', 'SubRef', 'TrabNot'])
     #output_df2.to_excel(itf.output_file_path.get(), index=False)
 
-
+    
     try:
         output_df2.to_excel(itf.output_file_path.get(), index=False)
         itf.tk.messagebox.showinfo("Sucesso", "Listagem processada com sucesso! \n A aplicação irá ser encerrada.")
