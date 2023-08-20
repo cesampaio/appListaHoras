@@ -110,12 +110,17 @@ def processar_dados():
     for nr, trabalhador in trabalhadores.items():
         output_data.append([trabalhador.nr, trabalhador.nome, trabalhador.prims, trabalhador.segs, trabalhador.sab, trabalhador.fer, trabalhador.dom, trabalhador.subref, trabalhador.trabnot])
 
-    output_df = pd.DataFrame(output_data, columns=['Nr', 'Nome', 'Primeiras', 'Seguintes', 'Sabado', 'Feriado', 'Domingo', 'SubRef', 'TrabNot'])
+    #output_df = pd.DataFrame(output_data, columns=['Nr', 'Nome', 'Primeiras', 'Seguintes', 'Sabado', 'Feriado', 'Domingo', 'SubRef', 'TrabNot'])
     #output_df.to_csv('output.csv', index=False)
-    output_df.to_csv(itf.output_file_path.get(), index=False)
+    #output_df.to_csv(itf.output_file_path.get()+'.csv', index=False)
+
+    # Exportar para um ficheiro XLSX
+    output_df2 = pd.DataFrame(output_data, columns=['Nr', 'Nome', 'Primeiras', 'Seguintes', 'Sabado', 'Feriado', 'Domingo', 'SubRef', 'TrabNot'])
+    #output_df2.to_excel(itf.output_file_path.get(), index=False)
+
 
     try:
-        output_df.to_csv(itf.output_file_path.get(), index=False)
+        output_df2.to_excel(itf.output_file_path.get(), index=False)
         itf.tk.messagebox.showinfo("Sucesso", "Listagem processada com sucesso! \n A aplicação irá ser encerrada.")
         itf.root.quit()
     except Exception as e:

@@ -14,7 +14,8 @@ def select_input_file(entry):
     entry.insert(0, file_path)
 
 def select_output_file():
-    file_path = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV files", "*.csv")])
+    #file_path = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV files", "*.csv")])
+    file_path = filedialog.asksaveasfilename(defaultextension=".xlsx", filetypes=[("XLSX files", "*.xlsx")])
     output_file_path.delete(0, tk.END)
     output_file_path.insert(0, file_path)
 
